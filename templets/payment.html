@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><script>{% load static %}</script><script>{% load custom_tags %}</script><script>var jsonDataww = {{ json_data|safe }};</script>
+<title id="title_1"></title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!--===============================================================================================-->
+<link href="{% static 'images/icons/favicon.png' %}" rel="icon" type="image/png"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'fonts/linearicons-v1.0.0/icon-font.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/animate/animate.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/animsition/css/animsition.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/daterangepicker/daterangepicker.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/MagnificPopup/magnific-popup.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+<link href="{% static 'css/util.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css"/>
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+<!-- Header -->
+<header>
+<!-- Header desktop -->
+<div class="container-menu-desktop">
+<!-- Topbar -->
+<div class="top-bar">
+<div class="content-topbar flex-sb-m h-full container">
+<div class="left-top-bar">
+		
+					</div>
+<div class="right-top-bar flex-w h-full">
+
+    
+	
+<a class="flex-c-m trans-04 p-lr-25" href="#">
+	
+						</a>
+<a class="flex-c-m trans-04 p-lr-25" href="#">
+			
+						</a>
+<a class="flex-c-m trans-04 p-lr-25" href="#">
+
+  
+					
+						</a>
+<a class="flex-c-m trans-04 p-lr-25" href="#">
+	
+					
+   
+						</a>
+</div>
+</div>
+</div>
+<div class="wrap-menu-desktop">
+<nav class="limiter-menu-desktop container">
+<!-- Logo desktop -->
+<a class="logo" href="#">
+<img alt="IMG-LOGO" src="{% get_image_url 8 %}"/>
+</a>
+<!-- Menu desktop -->
+<div class="menu-desktop">
+<ul class="main-menu">
+	<li>
+		<a href="{% url 'web:index' %}">Home</a>
+		
+		<span class="arrow-main-menu-m">
+		<i aria-hidden="true" class="fa fa-angle-right"></i>
+		</span>
+		</li>
+		<li>
+		<a href="{% url 'web:shop' %}">Shop</a>
+		</li>
+		<li>
+		<a   href="{% url 'shop:purchesed_list' %}">Order list</a>
+		</li>
+		<li>
+		<a href="{% url 'web:blog' %}">Blog</a>
+		</li>
+		<li>
+		<a href="{% url 'web:about' %}">About</a>
+		</li>
+		<li>
+		<a href="{% url 'web:contact' %}">Contact</a>
+		</li>
+
+
+		{% if user.is_authenticated %}
+        <li class="list-inline-item"><a  href="{% url 'shop:logout' %}" style="color: #222;"><div>Logout</div></a></li>
+    {% else %}
+        <li class="list-inline-item"><a href="{% url 'shop:login' %}" style="color: #222;">Login/Register</a></li>
+    {% endif %}
+</ul>
+</div>
+<!-- Icon header -->
+<div class="wrap-icon-header flex-w flex-r-m">
+    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+        <i class="zmdi zmdi-search"></i>
+    </div>
+	<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="">
+		<i class="zmdi zmdi-shopping-cart"></i>
+		
+	</div>
+	</div>
+	
+
+</div>
+
+
+</a>
+
+
+</div>
+</nav>
+</div>
+</div>
+<!-- Header Mobile -->
+<div class="wrap-header-mobile">
+<!-- Logo moblie -->
+<div class="logo-mobile">
+<a href="{% url 'web:index' %}"><img alt="IMG-LOGO" src="{% get_image_url 9 %}"/></a>
+</div>
+<!-- Icon header -->
+<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+<i class="zmdi zmdi-search"></i>
+</div>
+<a class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10" href="{% url 'shop:cart_list' %}">
+<i class="zmdi zmdi-shopping-cart"></i>
+
+</a>
+</div>
+<!-- Button show menu -->
+<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+<span class="hamburger-box">
+<span class="hamburger-inner"></span>
+</span>
+</div>
+</div>
+<!-- Menu Mobile -->
+<div class="menu-mobile">
+<ul class="topbar-mobile">
+<li>
+
+</li>
+</ul>
+<ul class="main-menu-m">
+<li>
+<a href="{% url 'web:index' %}">Home</a>
+
+<span class="arrow-main-menu-m">
+<i aria-hidden="true" class="fa fa-angle-right"></i>
+</span>
+</li>
+<li>
+<a href="{% url 'web:shop' %}">Shop</a>
+</li>
+<li>
+<a   href="{% url 'shop:purchesed_list' %}">Order list</a>
+</li>
+<li>
+<a href="{% url 'web:blog' %}">Blog</a>
+</li>
+<li>
+<a href="{% url 'web:about' %}">About</a>
+</li>
+<li>
+<a href="{% url 'web:contact' %}">Contact</a>
+</li>
+{% if user.is_authenticated %}
+        <li class="list-inline-item"><a  href="{% url 'shop:logout' %}"><div>Logout</div></a></li>
+    {% else %}
+        <li class="list-inline-item"><a href="{% url 'shop:login' %}">Login/Register</a></li>
+    {% endif %}
+</ul>
+</div>
+<!-- Modal Search -->
+<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+<div class="container-search-header">
+<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+<img alt="CLOSE" src="{% get_image_url 10 %}"/>
+</button>
+<form class="wrap-search-header flex-w p-l-15" role="search" action="{% url 'web:search' %}">
+<button class="flex-c-m trans-04">
+<i class="zmdi zmdi-search"></i>
+</button>
+<input class="plh3" name="search" placeholder="Search..." type="text"/>
+</form>
+</div>
+</div>
+</header>
+<!-- Cart -->
+
+
+ <div class="wrap-header-cart js-panel-cart">
+<div class="s-full js-hide-cart"></div>
+<div class="header-cart flex-col-l p-l-65 p-r-25">
+<div class="header-cart-title flex-w flex-sb-m p-b-8">
+<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+<i class="zmdi zmdi-close"></i>
+</div>
+</div>
+<div class="header-cart-content flex-w js-pscroll">
+<ul class="header-cart-wrapitem w-full">
+	{% for i in order %}
+<li class="header-cart-item flex-w flex-t m-b-12">
+<div class="header-cart-item-img">
+<img alt="IMG" src="{{i.0.item.images.all.0.image.url}}"/>
+</div>
+<div class="header-cart-item-txt p-t-8">
+<a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+	{{i.0.item.name}}
+							</a>
+<span class="header-cart-item-info">
+								 {% if i.0.item.disc > 0 %}
+								{% with discounted_price=i.0.item.price|calculate_discounted_price:i.0.item.disc|floatformat:2 %}
+							<ins>{{ discounted_price }} birr</ins><br><del>{{i.0.item.price}} </del> 
+								{% endwith %}
+							{% else %}
+								<span>{{i.0.item.price}} birr</span>
+							{% endif %}
+							</span>
+</div>
+{% endfor %}
+</li>
+</ul>
+<div class="w-full">
+<div class="header-cart-total w-full p-tb-40">
+						Total: {{subtot}} birr
+					</div> 
+ <div class="header-cart-buttons flex-w w-full">
+<a class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10" href="{% url 'shop:cart_list' %}">
+							View Cart
+						</a> 
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<br>
+<br>  <br>  <br>
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="{% url 'web:index' %}" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Ordered List
+			</span>
+		</div>
+	</div>
+		
+<br> 
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-xl-12">
+							<table class="table cart mb-12">
+								<thead>
+									<tr>
+										<th class="cart-product-thumbnail">Order Number</th>
+										<th class="cart-product-quantity">State</th>
+										<th class="cart-product-subtotal">Total Item cost</th>
+										<th class="cart-product-subtotal">Total Discount</th>
+										<th class="cart-product-subtotal">Total to be paid</th>
+										<th class="cart-product-subtotal">Paid amount</th>
+										<th class="cart-product-subtotal">View</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for i in listorder %}
+                                    
+									<tr class="cart_item">
+
+											<td class="cart-product-thumbnail">
+                                                <span class="amount">{{i.payed.id}} </span>
+
+											</td>
+                                            <td class="cart-product-quantity">
+                                                {{i.order.status}}
+                                            </td>
+
+
+											<td class="cart-product-quantity">
+                                                <span class="amount">{{i.total}} birr</span>
+											</td>
+
+		
+                                            <td class="cart-product-quantity">
+                                                <span class="amount">{{i.discunt}} birr</span>
+                                            </td>
+                                            <td class="cart-product-quantity">
+                                                <span class="amount">{{i.subtot}} birr</span>
+                                            </td>
+                                            <td class="cart-product-quantity">
+                                                <span class="amount">{{i.totalpaid}} birr</span>
+                                            </td>
+                                            <td class="cart-product-quantity">
+                                                <div class="d-flex justify-content-end">
+                                                    <a href="{% url 'shop:payment_display' i.id %}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" title="Remove this item">View Order</a>
+                                                </div>
+                                            </td>
+										</tr>
+									{% endfor %}
+									
+								</tbody>
+
+							</table>
+						</div>
+
+						
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+
+		<footer class="bg3 p-t-75 p-b-32">
+
+			<div class="container">
+			<div class="row">
+			<div class="col-sm-6 col-lg-3 p-b-50">
+			<h4 class="stext-301 cl0 p-b-30" id="h4_9">Categories</h4>
+			<ul>
+			<li class="p-b-10">
+				{% for i in type %}
+				<a href="{% url 'web:shop' %}?type={{ i.id }}" style="color: bisque;">{{i.name}}</a>
+			{% endfor %}
+							
+			</li>
+			</ul>
+			</div>
+			
+			
+			
+			
+			<div class="col-sm-6 col-lg-3 p-b-50">
+				<h4 class="stext-301 cl0 p-b-30" id="h4_9"> page</h4>
+				<ul>
+				<li class="p-b-10">
+					<a href="{% url 'web:index' %}" style="color: aliceblue;">Home</a>
+			
+					<span class="arrow-main-menu-m">
+					<i aria-hidden="true" class="fa fa-angle-right"></i>
+					</span>
+					</li>
+					<li>
+					<a href="{% url 'web:shop' %}" style="color: bisque;">Shop</a>
+					</li>
+					<li>
+					<a   href="{% url 'shop:purchesed_list' %}" style="color: bisque;">Order list</a>
+					</li>
+					<li>
+					<a href="{% url 'web:blog' %}" style="color: bisque;">Blog</a>
+					</li>
+					<li>
+					<a href="{% url 'web:about' %}" style="color: bisque;">About</a>
+					</li>
+					<li>
+					<a href="{% url 'web:contact' %}" style="color: bisque;">Contact</a>	
+								
+				</li>
+				</ul>
+				</div>
+			
+			
+			
+			<div class="col-sm-6 col-lg-3 p-b-50">
+			<h4 class="stext-301 cl0 p-b-30" id="h4_11">
+				
+				GET IN TOUCH</h4>
+			<p class="stext-107 cl7 size-201" id="p_12">Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879</p>
+			<div class="p-t-27">
+			
+			
+			<!-- <a class="fs-18 cl7 hov-cl1 trans-04 m-r-16" href="#">
+			<i class="fa fa-facebook"></i>
+			</a>
+			<a class="fs-18 cl7 hov-cl1 trans-04 m-r-16" href="#">
+			<i class="fa fa-instagram"></i>
+			</a>
+			<a class="fs-18 cl7 hov-cl1 trans-04 m-r-16" href="#">
+			<i class="fa fa-pinterest-p"></i>
+			</a> -->
+			
+			
+			</div>
+			</div>
+			<div class="col-sm-6 col-lg-3 p-b-50">
+			<h4 class="stext-301 cl0 p-b-30" id="h4_12">Newsletter</h4>
+			<form method="post" action="{% url 'web:collect_email' %}">
+				{% csrf_token %}
+			<div class="wrap-input1 w-full p-b-4">
+			<input class="input1 bg-none plh1 stext-107 cl7" name="email" placeholder="email@example.com" type="text"/>
+			<div class="focus-input1 trans-04"></div>
+			</div>
+			<div class="p-t-18">
+			<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+											Subscribe
+										</button>
+			</div>
+			</form>
+			</div>
+			
+			<div class="p-t-40">
+			<!-- <div class="flex-c-m flex-w p-b-18">
+			<a class="m-all-1" href="#">
+			<img alt="ICON-PAY" src="{% get_image_url 74 %}"/>
+			</a>
+			<a class="m-all-1" href="#">
+			<img alt="ICON-PAY" src="{% get_image_url 75 %}"/>
+			</a>
+			<a class="m-all-1" href="#">
+			<img alt="ICON-PAY" src="{% get_image_url 76 %}"/>
+			</a>
+			<a class="m-all-1" href="#">
+			<img alt="ICON-PAY" src="{% get_image_url 77 %}"/>
+			</a>
+			<a class="m-all-1" href="#">
+			<img alt="ICON-PAY" src="{% get_image_url 78 %}"/>
+			</a>
+			</div> -->
+			<p class="stext-107 cl6 txt-center">Copyright © All rights reserved | Made with by Colorlib & distributed by <a href= "http://zufan.et">zufan.et</a></p>
+			</div>
+			</div>
+			</footer>
+			<!-- Back to top -->
+			<div class="btn-back-to-top" id="myBtn">
+			<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+			</span>
+			</div>
+			<!-- Modal1 -->
+			<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+			<div class="overlay-modal1 js-hide-modal1"></div>
+			<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+			<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+			<img alt="CLOSE" src="{% get_image_url 79 %}"/>
+			</button>
+			<div class="row">
+			<div class="col-md-6 col-lg-7 p-b-30">
+			<div class="p-l-25 p-r-30 p-lr-0-lg">
+			<div class="wrap-slick3 flex-sb flex-w">
+			<div class="wrap-slick3-dots"></div>
+			<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+			<div class="slick3 gallery-lb">
+			<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+			<div class="wrap-pic-w pos-relative">
+			<img alt="IMG-PRODUCT" src="{% get_image_url 80 %}"/>
+			<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+			<i class="fa fa-expand"></i>
+			</a>
+			</div>
+			</div>
+			<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+			<div class="wrap-pic-w pos-relative">
+			<img alt="IMG-PRODUCT" src="{% get_image_url 81 %}"/>
+			<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+			<i class="fa fa-expand"></i>
+			</a>
+			</div>
+			</div>
+			<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+			<div class="wrap-pic-w pos-relative">
+			<img alt="IMG-PRODUCT" src="{% get_image_url 82 %}"/>
+			<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+			<i class="fa fa-expand"></i>
+			</a>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			<div class="col-md-6 col-lg-5 p-b-30">
+			<div class="p-r-50 p-t-5 p-lr-0-lg">
+			<h4 class="mtext-105 cl2 js-name-detail p-b-14" id="h4_13"></h4>
+			<span class="mtext-106 cl2">
+											$58.79
+										</span>
+			<p class="stext-102 cl3 p-t-23" id="p_14"></p>
+			<!-- -->
+			<div class="p-t-33">
+			<div class="flex-w flex-r-m p-b-10">
+			<div class="size-203 flex-c-m respon6">
+													Size
+												</div>
+			<div class="size-204 respon6-next">
+			<div class="rs1-select2 bor8 bg0">
+			<select class="js-select2" name="time">
+			<option>Choose an option</option>
+			<option>Size S</option>
+			<option>Size M</option>
+			<option>Size L</option>
+			<option>Size XL</option>
+			</select>
+			<div class="dropDownSelect2"></div>
+			</div>
+			</div>
+			</div>
+			<div class="flex-w flex-r-m p-b-10">
+			<div class="size-203 flex-c-m respon6">
+													Color
+												</div>
+			<div class="size-204 respon6-next">
+			<div class="rs1-select2 bor8 bg0">
+			<select class="js-select2" name="time">
+			<option>Choose an option</option>
+			<option>Red</option>
+			<option>Blue</option>
+			<option>White</option>
+			<option>Grey</option>
+			</select>
+			<div class="dropDownSelect2"></div>
+			</div>
+			</div>
+			</div>
+			<div class="flex-w flex-r-m p-b-10">
+			<div class="size-204 flex-w flex-m respon6-next">
+			<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+			<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+			<i class="fs-16 zmdi zmdi-minus"></i>
+			</div>
+			<input class="mtext-104 cl3 txt-center num-product" name="num-product" type="number" value="1"/>
+			<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+			<i class="fs-16 zmdi zmdi-plus"></i>
+			</div>
+			</div>
+			<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+														Add to cart
+													</button>
+			</div>
+			</div>
+			</div>
+			<!-- -->
+			<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+			<div class="flex-m bor9 p-r-10 m-r-11">
+			<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist" href="#">
+			<i class="zmdi zmdi-favorite"></i>
+			</a>
+			</div>
+			<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook" href="#">
+			<i class="fa fa-facebook"></i>
+			</a>
+			<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter" href="#">
+			<i class="fa fa-twitter"></i>
+			</a>
+			<a class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus" href="#">
+			<i class="fa fa-google-plus"></i>
+			</a>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+			<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+			<script>
+					$(".js-select2").each(function(){
+						$(this).select2({
+							minimumResultsForSearch: 20,
+							dropdownParent: $(this).next('.dropDownSelect2')
+						});
+					})
+				</script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+			<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/slick/slick.min.js' %}"></script>
+			<script src="{% static 'js/slick-custom.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/parallax100/parallax100.js' %}"></script>
+			<script>
+					$('.parallax100').parallax100();
+				</script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+			<script>
+					$('.gallery-lb').each(function() { // the containers for all your galleries
+						$(this).magnificPopup({
+							delegate: 'a', // the selector for gallery item
+							type: 'image',
+							gallery: {
+								enabled:true
+							},
+							mainClass: 'mfp-fade'
+						});
+					});
+				</script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/isotope/isotope.pkgd.min.js' %}"></script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
+			<script>
+					$('.js-addwish-b2').on('click', function(e){
+						e.preventDefault();
+					});
+			
+					$('.js-addwish-b2').each(function(){
+						var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+						$(this).on('click', function(){
+							swal(nameProduct, "is added to wishlist !", "success");
+			
+							$(this).addClass('js-addedwish-b2');
+							$(this).off('click');
+						});
+					});
+			
+					$('.js-addwish-detail').each(function(){
+						var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+			
+						$(this).on('click', function(){
+							swal(nameProduct, "is added to wishlist !", "success");
+			
+							$(this).addClass('js-addedwish-detail');
+							$(this).off('click');
+						});
+					});
+			
+					/*---------------------------------------------*/
+			
+					$('.js-addcart-detail').each(function(){
+						var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+						$(this).on('click', function(){
+							swal(nameProduct, "is added to cart !", "success");
+						});
+					});
+				
+				</script>
+			<!--===============================================================================================-->
+			<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+			<script>
+					$('.js-pscroll').each(function(){
+						$(this).css('position','relative');
+						$(this).css('overflow','hidden');
+						var ps = new PerfectScrollbar(this, {
+							wheelSpeed: 1,
+							scrollingThreshold: 1000,
+							wheelPropagation: false,
+						});
+			
+						$(window).on('resize', function(){
+							ps.update();
+						})
+					});
+				</script>
+			<!--===============================================================================================-->
+			<script src="{% static 'js/main.js' %}"></script>
+			<script src="{% static 'webfunction.js' %}"></script><script>
+				document.addEventListener('DOMContentLoaded', function () {
+					// Iterate over each key in the JSON data
+					for (var key in jsonDataww) {
+						if (jsonDataww.hasOwnProperty(key)) {
+							var element = document.getElementById(key);
+							if (element) {
+								if(key.startsWith("a")){
+									element.href = jsonDataww[key['link']];
+								}else{
+									element.textContent = jsonDataww[key];
+								}
+							}
+						}
+					}
+				});
+				</script></body>
+			</html>
