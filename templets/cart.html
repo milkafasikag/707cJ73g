@@ -276,6 +276,7 @@
 	
 
 <!-- Shoping Cart -->
+<!-- 
 <form class="bg0 p-t-75 p-b-85">
 	<div class="container">
 		<div class="row">
@@ -426,10 +427,119 @@
 			</div>
 		</div>
 	</div>
-</form>
+</form> -->
 	
 		
-<!-- Footer -->
+
+
+<div class="container-fluid pt-5">
+	<div class="row px-xl-5">
+		<div class="col-lg-8 table-responsive mb-5">
+			<table class="table table-bordered text-center mb-0">
+				<thead>
+					<tr>
+						<th>Products</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				{% for i in order %}
+				<tbody class="align-middle">
+					<tr>
+						<td class="align-middle"><img src="{{i.0.item.images.all.0.image.url}}" alt="" style="width: 50px;"> Colorful Stylish Shirt</td>
+						<td class="align-middle">
+							{% if i.0.item.disc > 0 %}
+								{% with discounted_price=i.0.item.price|calculate_discounted_price:i.0.item.disc|floatformat:2 %}
+								<ins>{{ discounted_price }} birr</ins> <br><del>{{i.0.item.price}} </del> 
+								{% endwith %}
+							{% else %}
+								<span>{{i.0.item.price}} birr</span>
+							{% endif %}
+						  </td>
+						<td class="align-middle">
+							<form class="cart mb-0 d-flex justify-content-between align-items-center" method="post" enctype='multipart/form-data'>
+								{% csrf_token %} 
+								<input type="text" name="id" value="{{i.0.id}}" hidden>
+
+			
+							<div class="d-flex align-items-center mb-4 pt-2">
+								
+								<div class="input-group quantity mr-3" style="width: 130px;">
+									<div class="input-group-btn">
+										
+									</div>
+									<input type="number" class="form-control bg-white text-center quantity-input" value="{{i.0.quntity}}" name="qunt">
+									<div class="input-group-btn">
+										
+									</div>
+								</div>
+								<button class="btn btn-primary px-3" type="submit" style="background-color: black;" ><i class="fa fa-shopping-cart mr-1"></i> Change</button>
+							</div>
+							</form>
+						</td>
+						<td class="align-middle">
+							{% if i.0.item.disc > 0 %}
+
+							{% with discounted_price=i.1|calculate_discounted_price:i.0.item.disc|floatformat:2 %}
+							<ins>{{ discounted_price }} birr</ins> <br><del>{{i.1}} </del> 
+								{% endwith %}
+							{% else %}
+								<span>{{i.1}} birr</span>
+							{% endif %}
+						</td>
+						<td class="cart-product-remove">
+							<a href="{% url 'shop:remove' id=i.0.id %}" class="btn btn-block btn-primary my-3 py-3" title="Remove this item"  style="background-color: black;">Remove</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-4">
+			<form action="{% url 'shop:discount' %}" method="post">
+				<div class="input-group">
+					{% csrf_token %} 
+
+					<input type="text" class="form-control p-4" placeholder="Coupon Code" name="code" >
+					
+					<div class="input-group-append">
+						<button class="btn btn-primary" style="background-color: rgb(184, 169, 169);">Apply Coupon</button>
+					</div>
+				</div>
+			</form> 
+			<br>
+	   <div class="card border-secondary mb-5">
+				<div class="card-header  border-0">
+					<h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+				</div>
+				<div class="card-body">
+					<div class="d-flex justify-content-between mb-3 pt-1">
+						<h6 class="font-weight-medium">Subtotal</h6>
+						<h6 class="font-weight-medium">{{total}} birr</h6>
+					</div>
+					<div class="d-flex justify-content-between">
+						<h6 class="font-weight-medium">Shipping</h6>
+						<h6 class="font-weight-medium">Free Delivery</h6>
+					</div>
+					<div class="d-flex justify-content-between">
+						<h6 class="font-weight-medium">Coupon Discount</h6>
+						<h6 class="font-weight-medium">-{{discunt}} birr</h6>
+					</div>
+				</div>
+				<div class="card-footer border-secondary bg-transparent">
+					<div class="d-flex justify-content-between mt-2">
+						<h5 class="font-weight-bold">Total</h5>
+						<h5 class="font-weight-bold">{{subtot}} birr</h5>
+					</div>
+					<a href="{% url 'shop:payment_display' ord.id %}" class="btn btn-block btn-primary my-3 py-3" style="background-color: black;">Proceed to Checkout</a>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 	
